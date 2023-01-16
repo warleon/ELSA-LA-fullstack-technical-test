@@ -53,7 +53,7 @@ La prueba consiste en crear un API REST para un único recurso, la cual será co
 
 1. Debe utilizar React + Typescript junto al framework [Mantine UI](https://mantine.dev/).
 
-2. Debe contar con un registro solo para los voluntarios. Los administradores (superusers) solo pueden ser creados desde Django admin.
+2. Debe contar con un solo registro  para los voluntarios y adoptantes. Los administradores (superusers) solo pueden ser creados desde Django admin. Para terminos prácticos puede asumir que los roles son excluyentes.
 
 3. Debe contar con un Login unificado para los voluntarios, adoptantes y administradores.
 

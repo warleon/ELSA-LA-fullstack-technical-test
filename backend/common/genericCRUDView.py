@@ -10,11 +10,11 @@ class GenericCRUDView(APIView):
 
     def get(self, request, *args, **kwargs):
         generic_id = request.query_params.get('id', None)
-        if generic_id: # Fetch a single shelter by ID
-            generic = get_object_or_404(self.model, id=shelter_id)
+        if generic_id: # Fetch a single object by ID
+            generic = get_object_or_404(self.model, id=generic_id)
             serializer = self.serializer_class(generic)
             return Response(serializer.data, status=status.HTTP_200_OK)
-        else: # Fetch a paginated list of shelters
+        else: # Fetch a paginated list of objects
             generics = self.model.objects.all()
             paginator = Paginator()  
             paginated_generics = paginator.paginate_queryset(generics, request)
@@ -43,6 +43,6 @@ class GenericCRUDView(APIView):
         generic_id = request.query_params.get('id', None)
         if not generic_id:
             return Response({"detail": "ID is required for deletion."}, status=status.HTTP_400_BAD_REQUEST)
-        generic = get_object_or_404(self.model, id=shelter_id)
+        generic = get_object_or_404(self.model, id=generic_id)
         generic.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

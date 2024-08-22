@@ -26,5 +26,5 @@ class Animal(models.Model):
     age_at_inscription = models.IntegerField()  # the approximate age of the animal when it was inscribed in the system
     shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)  # shelter where the animal belongs
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name} ({self.breed})"

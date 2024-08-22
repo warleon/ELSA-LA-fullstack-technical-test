@@ -1,10 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from common.pagination import Paginator
 
 class GenericCRUDView(APIView):
+    permission_classes = [IsAuthenticated]
     model = None  # The model to operate on
     serializer_class = None  # The serializer to use
 

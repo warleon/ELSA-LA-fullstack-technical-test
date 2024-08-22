@@ -6,7 +6,7 @@
 
 ### Entity Relation Diagram
 
-```Mermaid
+```mermaid
 ---
 title: MOON SHELTER
 ---
@@ -65,6 +65,31 @@ erDiagram
     Helper ||--o| Adoption : ""
     Animal ||--o| Adoption : ""
     Shelter ||--o{ Helper : ""
+```
+
+### Sequence Diagrams
+
+```mermaid
+---
+title: MOON SHELTER - landing page rendering process
+---
+sequenceDiagram
+    actor U as User
+    participant S as Site / Frontend
+    participant A as API / Backend
+    participant D as Database
+
+    U ->> S : visits the landing page
+    S ->> A : requests a list of animals
+    A ->> D : querys the Animal table
+    note over A,D : not adopted animals <br/> ordered by the time of inscription <br/> paginated in groups of 12
+    D ->> A : returns the query result
+    S ->> A : requests a list of shelters
+    A ->> D : querys the Shelter table
+    note over A,D : shelter in random order <br/> paginated in groups of 4
+    D ->> A : returns the query result
+    note over S,S : Renders the page <br/> using the results
+    S ->> U : responds with the page
 ```
 
 # TECHNICAL TEST REQUIREMENTS
